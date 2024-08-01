@@ -1,5 +1,5 @@
+import { teams } from "@/app/(appendices)/teams";
 import Image from "next/image";
-import { teams } from "./teams";
 
 export default function TeamIcon({ teamId }: { teamId: number }) {
   const team = teams[teamId];

@@ -1,4 +1,4 @@
-export const actualTyres = {
+export const actualTyres: ActualTyres = {
   0: "-",
   16: "C5",
   17: "C4",
@@ -8,6 +8,10 @@ export const actualTyres = {
   21: "C0",
   7: "Inter",
   8: "Wet",
+};
+
+type ActualTyres = {
+  [key: number]: string;
 };
 
 export const visualTyres: VisualTyres = {

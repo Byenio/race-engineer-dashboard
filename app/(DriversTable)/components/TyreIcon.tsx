@@ -1,4 +1,4 @@
-import { visualTyres } from "./tyres";
+import { visualTyres } from "@/app/(appendices)/tyres";
 
 type Colors = {
   [key: string]: string;

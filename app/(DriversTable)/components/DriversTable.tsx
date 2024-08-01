@@ -1,6 +1,6 @@
+import Driver from "./Driver";
 import { DrsIcon } from "./DrsIcon";
 import { headers } from "./headers";
-import TeamIcon from "./TeamIcon";
 import { TyreIcon } from "./TyreIcon";
 
 type Rows = {
@@ -8,11 +8,12 @@ type Rows = {
   position: number;
   driver: string;
   teamId: number;
-  drsAllowed: number;
+  drs: number;
   gap: number;
   leader: number;
   tyre: number;
   tyreAge: number;
+  pitStatus: number;
   tyreWear: number;
   lastLap: number;
   penalties: number;
@@ -62,17 +63,17 @@ function DriversTableBody({
           key={row.driverId}
           className={
             row.driverId === playerId
-              ? "border-0 border-y-1 border-gray-500"
+              ? "bg-[#CCFF0025]"
               : "border-0 rounded-full"
           }
         >
           <PositionCell position={row.position} />
           <DriverCell driver={row.driver} teamId={row.teamId} />
-          <DrsAllowedCell drsAllowed={row.drsAllowed} />
+          <DrsCell drs={row.drs} />
           <GapCell gap={row.gap} />
           <LeaderGapCell leaderGap={row.leader} />
           <TyreCell tyre={row.tyre} />
-          <TyreAgeCell tyreAge={row.tyreAge} />
+          <TyreAgeCell tyreAge={row.tyreAge} pitStatus={row.pitStatus} />
           <TyreWearCell tyreWear={row.tyreWear} />
           <LastLapCell lastLap={row.lastLap} />
           <PenaltiesCell penalties={row.penalties} />
@@ -88,17 +89,16 @@ function PositionCell({ position }: { position: number }) {
 
 function DriverCell({ driver, teamId }: { driver: string; teamId: number }) {
   return (
-    <td className="px-5">
-      <TeamIcon teamId={teamId} />
-      {driver}
+    <td className="px-5 inline-flex">
+      <Driver driver={driver} teamId={teamId} />
     </td>
   );
 }
 
-function DrsAllowedCell({ drsAllowed }: { drsAllowed: number }) {
+function DrsCell({ drs }: { drs: number }) {
   return (
     <td className="px-5 text-center">
-      <DrsIcon drsAllowed={drsAllowed} />
+      <DrsIcon drsAllowed={drs} />
     </td>
   );
 }
@@ -119,8 +119,18 @@ function TyreCell({ tyre }: { tyre: number }) {
   );
 }
 
-function TyreAgeCell({ tyreAge }: { tyreAge: number }) {
-  return <td className="px-5 text-end">{tyreAge}</td>;
+function TyreAgeCell({
+  tyreAge,
+  pitStatus,
+}: {
+  tyreAge: number;
+  pitStatus: number;
+}) {
+  return pitStatus === 0 ? (
+    <td className="px-5 text-end">{tyreAge}</td>
+  ) : (
+    <td className="px-5 text-end text-red-500">PIT</td>
+  );
 }
 
 function TyreWearCell({ tyreWear }: { tyreWear: number }) {

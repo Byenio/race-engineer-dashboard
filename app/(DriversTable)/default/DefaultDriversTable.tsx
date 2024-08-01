@@ -1,4 +1,4 @@
-import DriversTable from "./DriversTable";
+import DriversTable from "@/app/(DriversTable)/components/DriversTable";
 
 const defaultRow = {
   driverId: 0,
@@ -6,11 +6,12 @@ const defaultRow = {
   driverNumber: 0,
   driver: "-",
   teamId: 0,
-  drsAllowed: 0,
+  drs: 0,
   gap: 0,
   leader: 0,
   tyre: 0,
   tyreAge: 0,
+  pitStatus: 0,
   tyreWear: 0,
   lastLap: 0,
   penalties: 0,
@@ -21,11 +22,12 @@ type Rows = {
   position: number;
   driver: string;
   teamId: number;
-  drsAllowed: number;
+  drs: number;
   gap: number;
   leader: number;
   tyre: number;
   tyreAge: number;
+  pitStatus: number;
   tyreWear: number;
   lastLap: number;
   penalties: number;
