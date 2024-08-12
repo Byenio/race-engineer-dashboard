@@ -15,7 +15,8 @@ const handler = app.getRequestHandler();
 /** f1 telemetry setup */
 const options = {
   port: 20780,
-  address: "192.168.67.60",
+  // address: "192.168.67.60",
+  address: "172.25.62.89",
 };
 
 const f123 = new F123UDP(options);

@@ -42,9 +42,11 @@ export default function DriversTable({
 function DriversTableHead({ headers }: { headers: Headers[] }) {
   return (
     <thead>
-      {headers.map((header) => (
-        <th key={header.key}>{header.label}</th>
-      ))}
+      <tr>
+        {headers.map((header) => (
+          <th key={header.key}>{header.label}</th>
+        ))}
+      </tr>
     </thead>
   );
 }
