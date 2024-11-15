@@ -1,7 +1,7 @@
 import { GeistMono } from "geist/font/mono";
 import type { Metadata } from "next";
 
-import "./globals.css";
+import "@styles/globals.css";
 import Providers from "./providers";
 
 export const metadata: Metadata = {

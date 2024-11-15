@@ -2,8 +2,8 @@ import { F123UDP } from "f1-23-udp";
 import next from "next";
 import { createServer } from "node:http";
 import { Server } from "socket.io";
-import config from "./server.conf.js";
-import { eventNames } from "./server.constants.js";
+import config from "../config/server.conf.js";
+import { eventNames } from "../lib/server.constants.js";
 
 const { dev, hostname, port, f123options } = config;
 
