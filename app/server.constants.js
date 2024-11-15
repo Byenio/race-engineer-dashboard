@@ -1,0 +1,16 @@
+export const eventNames = [
+  "motion",
+  "session",
+  "lapData",
+  "event",
+  "participants",
+  "carSetups",
+  "carTelemetry",
+  "carStatus",
+  "finalClassification",
+  "lobbyInfo",
+  "carDamage",
+  "sessionHistory",
+  "tyreSets",
+  "motionEx",
+];
