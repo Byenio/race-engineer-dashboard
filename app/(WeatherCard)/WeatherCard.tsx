@@ -25,8 +25,8 @@ export default function WeatherCard() {
 
   if (!sessionData)
     return (
-      <Card className="basis-1/3" cardName="weather">
-        <div className="flex gap-12">
+      <Card className="basis-1/3 max-h-36" cardName="weather">
+        <div className="flex gap-12 mx-2 py-2 overflow-x-scroll max-w-96">
           <CurrentWeather currentWeather={0} trackTemp={0} airTemp={0} />
           <DefaultWeatherForecast />
         </div>
@@ -35,17 +35,19 @@ export default function WeatherCard() {
 
   if (sessionData)
     return (
-      <div className="flex gap-12">
-        <CurrentWeather
-          currentWeather={sessionData.m_weather}
-          trackTemp={sessionData.m_trackTemperature}
-          airTemp={sessionData.m_airTemperature}
-        />
-        <WeatherForecast
-          numForecastSamples={sessionData.m_numWeatherForecastSamples}
-          forecastSamples={sessionData.m_weatherForecastSamples}
-        />
-      </div>
+      <Card className="basis-2/3 max-h-36" cardName="weather">
+        <div className="flex gap-12 mx-2 py-2 overflow-x-scroll max-w-96">
+          <CurrentWeather
+            currentWeather={sessionData.m_weather}
+            trackTemp={sessionData.m_trackTemperature}
+            airTemp={sessionData.m_airTemperature}
+          />
+          <WeatherForecast
+            numForecastSamples={sessionData.m_numWeatherForecastSamples}
+            forecastSamples={sessionData.m_weatherForecastSamples}
+          />
+        </div>
+      </Card>
     );
 }
 
@@ -62,8 +64,9 @@ function CurrentWeather({
     <div>
       <div>NOW</div>
       <div>{weather[currentWeather]}</div>
-      <div>{trackTemp}°</div>
-      <div>{airTemp}°</div>
+      <div>
+        {trackTemp}°/{airTemp}°
+      </div>
     </div>
   );
 }

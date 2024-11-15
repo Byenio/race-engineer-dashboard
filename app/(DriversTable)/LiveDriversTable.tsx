@@ -65,7 +65,7 @@ export default function DriversTable() {
 
   if (!allDataValid) {
     return (
-      <Card className="basis-3/5" cardName="drivers table">
+      <Card className="w-auto" cardName="drivers table">
         <DefaultDriversTable />
       </Card>
     );
@@ -88,7 +88,11 @@ export default function DriversTable() {
 
     rows.sort((a, b) => a.position - b.position);
 
-    return <LiveDriversTable rows={rows} playerId={playerId} />;
+    return (
+      <Card className="basis-3/5" cardName="drivers table">
+        <LiveDriversTable rows={rows} playerId={playerId} />
+      </Card>
+    );
   }
 }
 

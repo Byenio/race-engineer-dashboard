@@ -64,10 +64,10 @@ export default function PitstopCard() {
     };
 
     return (
-      <>
+      <Card className="basis-1/4" cardName="pit info">
         <PitInfo {...livePitInfoData} />
         <PitTimers {...livePitTimersData} />
-      </>
+      </Card>
     );
   }
 }

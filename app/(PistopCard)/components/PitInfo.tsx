@@ -39,7 +39,6 @@ type PitInfoData = {
 };
 
 export default function PitInfo(pitInfoData: PitInfoData) {
-  console.log(pitInfoData.eventStringCode, " ", pitInfoData.eventDetails);
   // if (eventData.m_eventStringCode === "TeamMateInPits") {
   //   <TeammateInPits teammateInPits={eventData.m_eventStringCode} />;
   // }

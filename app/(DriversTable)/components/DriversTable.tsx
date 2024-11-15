@@ -1,3 +1,4 @@
+import { formatTime } from "@/app/utils";
 import Driver from "./Driver";
 import { DrsIcon } from "./DrsIcon";
 import { headers } from "./headers";
@@ -32,7 +33,7 @@ export default function DriversTable({
   playerId: number;
 }) {
   return (
-    <table>
+    <table className="w-full m-auto">
       <DriversTableHead headers={headers} />
       <DriversTableBody rows={rows} playerId={playerId} />
     </table>
@@ -65,7 +66,7 @@ function DriversTableBody({
           key={row.driverId}
           className={
             row.driverId === playerId
-              ? "bg-[#CCFF0025]"
+              ? "border-x-5 border-y-1 border-[#ffffff60]"
               : "border-0 rounded-full"
           }
         >
@@ -86,12 +87,12 @@ function DriversTableBody({
 }
 
 function PositionCell({ position }: { position: number }) {
-  return <td className="px-5 text-center">{position}</td>;
+  return <td className="px-5 text-center min-w-16">{position}</td>;
 }
 
 function DriverCell({ driver, teamId }: { driver: string; teamId: number }) {
   return (
-    <td className="px-5 inline-flex">
+    <td className="px-5 text-center font-semibold min-w-36">
       <Driver driver={driver} teamId={teamId} />
     </td>
   );
@@ -106,11 +107,17 @@ function DrsCell({ drs }: { drs: number }) {
 }
 
 function GapCell({ gap }: { gap: number }) {
-  return <td className="px-5 text-end">{formatTime(gap)}</td>;
+  let value: string | number = 0;
+  if (gap === 0) value = "-";
+  if (gap !== 0) value = formatTime(gap);
+  return <td className="px-5 pr-[1.6rem] text-end min-w-32">{value}</td>;
 }
 
 function LeaderGapCell({ leaderGap }: { leaderGap: number }) {
-  return <td className="px-5 text-end">{formatTime(leaderGap)}</td>;
+  let value: string | number = 0;
+  if (leaderGap === 0) value = "-";
+  if (leaderGap !== 0) value = formatTime(leaderGap);
+  return <td className="px-5 pr-[1.6rem] text-end min-w-32">{value}</td>;
 }
 
 function TyreCell({ tyre }: { tyre: number }) {
@@ -129,38 +136,33 @@ function TyreAgeCell({
   pitStatus: number;
 }) {
   return pitStatus === 0 ? (
-    <td className="px-5 text-end">{tyreAge}</td>
+    <td className="px-5 text-end min-w-20">{tyreAge}</td>
   ) : (
-    <td className="px-5 text-end text-red-500">PIT</td>
+    <td className="px-5 text-end min-w-20 text-red-500">PIT</td>
   );
 }
 
 function TyreWearCell({ tyreWear }: { tyreWear: number }) {
-  return <td className="px-5 text-end">{tyreWear}</td>;
+  return (
+    <td className="px-5 text-end min-w-20">
+      {tyreWear}
+      {tyreWear ? "%" : ""}
+    </td>
+  );
 }
 
 function LastLapCell({ lastLap }: { lastLap: number }) {
-  return <td className="px-5 text-end">{formatTime(lastLap)}</td>;
+  return (
+    <td className="px-5 pr-[1.6rem] text-end min-w-32">
+      {formatTime(lastLap)}
+    </td>
+  );
 }
 
 function PenaltiesCell({ penalties }: { penalties: number }) {
-  return <td className="px-5 text-end">{penalties}s</td>;
-}
-
-function formatTime(time: number): string {
-  const totalSeconds = Math.floor(time / 1000);
-
-  const minutes = Math.floor(totalSeconds / 60);
-  const seconds = totalSeconds % 60;
-
-  const milliseconds = time % 1000;
-
-  const paddedMilliseconds = String(milliseconds).padStart(3, "0");
-
-  if (minutes > 0) {
-    const paddedSeconds = String(seconds).padStart(2, "0");
-    return `${minutes}:${paddedSeconds}.${paddedMilliseconds}`;
-  }
-
-  return `${seconds}.${paddedMilliseconds}`;
+  return (
+    <td className="px-5 text-center min-w-20">
+      {penalties ? `${penalties}s` : "-"}
+    </td>
+  );
 }

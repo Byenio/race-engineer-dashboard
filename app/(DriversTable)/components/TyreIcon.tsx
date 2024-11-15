@@ -16,6 +16,6 @@ export function TyreIcon({ tyre }: { tyre: number }) {
   };
 
   return (
-    <div className={`${colors[actualTyre.color]}`}>{actualTyre.abbrv}</div>
+    <div className={`${colors[actualTyre.color]}`}>({actualTyre.abbrv})</div>
   );
 }

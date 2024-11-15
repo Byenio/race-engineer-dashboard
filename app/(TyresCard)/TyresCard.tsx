@@ -56,29 +56,35 @@ export default function TyresCard() {
 
   if (carDamageData && carStatusData && carTelemetryData) {
     return (
-      <LiveTyresData
-        tyreDamage={carDamageData.m_car_damage_data[playerId].m_tyres_damage}
-        actualTyreCompound={
-          carStatusData.m_car_status_data[playerId].m_actual_tyre_compound
-        }
-        visualTyreCompound={
-          carStatusData.m_car_status_data[playerId].m_visual_tyre_compound
-        }
-        tyreAge={carStatusData.m_car_status_data[playerId].m_tyres_age_laps}
-        brakeTemps={
-          carTelemetryData.m_carTelemetryData[playerId].m_brakesTemperature
-        }
-        tyreSurfaceTemps={
-          carTelemetryData.m_carTelemetryData[playerId]
-            .m_tyresSurfaceTemperature
-        }
-        tyreInnerTemps={
-          carTelemetryData.m_carTelemetryData[playerId].m_tyresInnerTemperature
-        }
-        tyrePressures={
-          carTelemetryData.m_carTelemetryData[playerId].m_tyresPressure
-        }
-      />
+      <Card
+        cardName="Tyres"
+        className="basis-1/4 flex flex-wrap justify-center"
+      >
+        <LiveTyresData
+          tyreDamage={carDamageData.m_car_damage_data[playerId].m_tyres_damage}
+          actualTyreCompound={
+            carStatusData.m_car_status_data[playerId].m_actual_tyre_compound
+          }
+          visualTyreCompound={
+            carStatusData.m_car_status_data[playerId].m_visual_tyre_compound
+          }
+          tyreAge={carStatusData.m_car_status_data[playerId].m_tyres_age_laps}
+          brakeTemps={
+            carTelemetryData.m_carTelemetryData[playerId].m_brakesTemperature
+          }
+          tyreSurfaceTemps={
+            carTelemetryData.m_carTelemetryData[playerId]
+              .m_tyresSurfaceTemperature
+          }
+          tyreInnerTemps={
+            carTelemetryData.m_carTelemetryData[playerId]
+              .m_tyresInnerTemperature
+          }
+          tyrePressures={
+            carTelemetryData.m_carTelemetryData[playerId].m_tyresPressure
+          }
+        />
+      </Card>
     );
   }
 }
